@@ -1,5 +1,6 @@
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
 var packageBody,ground,box1;
+
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -15,14 +16,13 @@ function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
 
-	
-	packagesprite = createSprite(width/2,80,10,10);
-	packagesprite.addImage(packageImage);
-	packagesprite.scale = 0.2;
+	packagesprite=createSprite(width/2, 80, 10,10);
+	packagesprite.addImage(packageImage)
+	packagesprite.scale=0.2
 
 	helicopterSprite=createSprite(width/2, 200, 10,10);
-	helicopterSprite.addImage(helicopterIMG);
-	helicopterSprite.scale=0.6;
+	helicopterSprite.addImage(helicopterIMG)
+	helicopterSprite.scale=0.6
 
 	
 
@@ -30,10 +30,13 @@ function setup() {
 	world = engine.world;
 
 	box1 = new Box(400,655,200,20);
-	ground = new Ground(400,660,800,10);
-	packageBody = Bodies.circle(width/2,200,5,{restitution:0.4,isStatic:true});
 
-	Engine.run(engine)
+	ground = new Ground(400,660,800,10);
+
+	packageBody = Bodies.circle(width/2,200,5,{restitution:0.4,isStatic:true});
+	World.add(world, packageBody);
+
+	
 }
 
 
